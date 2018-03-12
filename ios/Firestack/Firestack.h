@@ -8,9 +8,30 @@
 #define Firestack_h
 
 #import <UIKit/UIKit.h>
-#import "RCTBridgeModule.h"
+
+#if __has_include(<React/RCTBridge.h>)
+#import <React/RCTBridge.h>
+#elif __has_include("RCTBridge.h")
+#import "RCTBridge.h"
+#else
+#import "React/RCTBridge.h"   // Required when used as a Pod in a Swift project
+#endif
+
+#if __has_include(<React/RCTEventDispatcher.h>)
+#import <React/RCTEventDispatcher.h>
+#elif __has_include("RCTEventDispatcher.h")
 #import "RCTEventDispatcher.h"
+#else
+#import "React/RCTEventDispatcher.h"   // Required when used as a Pod in a Swift project
+#endif
+
+#if __has_include(<React/RCTEventEmitter.h>)
+#import <React/RCTEventEmitter.h>
+#elif __has_include("RCTEventEmitter.h")
 #import "RCTEventEmitter.h"
+#else
+#import "React/RCTEventEmitter.h"   // Required when used as a Pod in a Swift project
+#endif
 
 @interface Firestack : RCTEventEmitter <RCTBridgeModule> {
 }
