@@ -1,12 +1,18 @@
 apply plugin: 'com.android.library'
 
+def DEFAULT_COMPILE_SDK_VERSION = 23
+def DEFAULT_BUILD_TOOLS_VERSION = "23.0.1"
+def DEFAULT_TARGET_SDK_VERSION  = 23
+def DEFAULT_GOOGLE_PLAY_SERVICES_VERSION = "+"
+def DEFAULT_FIREBASE_VERSION = "10.0.1"
+
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion rootProject.hasProperty("compileSdkVersion") ? rootProject.compileSdkVersion : DEFAULT_COMPILE_SDK_VERSION
+    buildToolsVersion rootProject.hasProperty("buildToolsVersion") ? rootProject.buildToolsVersion : DEFAULT_BUILD_TOOLS_VERSION
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion rootProject.hasProperty("targetSdkVersion") ? rootProject.targetSdkVersion : DEFAULT_TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
         multiDexEnabled  true
@@ -19,13 +25,16 @@ android {
 }
 
 dependencies {
+    def googlePlayServicesVersion = rootProject.hasProperty("googlePlayServicesVersion") ? rootProject.googlePlayServicesVersion : DEFAULT_GOOGLE_PLAY_SERVICES_VERSION
+    def firebaseVersion = rootProject.hasProperty("firebaseVersion") ? rootProject.firebaseVersion : DEFAULT_FIREBASE_VERSION
+
     compile 'com.facebook.react:react-native:0.20.+'
+    compile "com.google.android.gms:play-services-base:$googlePlayServicesVersion"
 
-    compile 'com.google.firebase:firebase-core:10.0.1'
-    compile 'com.google.firebase:firebase-auth:10.0.1'
-    compile 'com.google.firebase:firebase-analytics:10.0.1'
-    compile 'com.google.firebase:firebase-database:10.0.1'
-    compile 'com.google.firebase:firebase-storage:10.0.1'
-    compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile "com.google.firebase:firebase-core:$firebaseVersion"
+    compile "com.google.firebase:firebase-auth:$firebaseVersion"
+    compile "com.google.firebase:firebase-analytics:$firebaseVersion"
+    compile "com.google.firebase:firebase-database:$firebaseVersion"
+    compile "com.google.firebase:firebase-storage:$firebaseVersion"
+    compile "com.google.firebase:firebase-messaging:$firebaseVersion"
 }
-
