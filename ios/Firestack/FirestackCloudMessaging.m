@@ -17,6 +17,10 @@
 
 @implementation FirestackCloudMessaging
 
++ (BOOL)requiresMainQueueSetup {
+  return YES;
+}
+
 // https://github.com/facebook/react-native/blob/master/Libraries/PushNotificationIOS/RCTPushNotificationManager.m
 static NSDictionary *RCTFormatLocalNotification(UILocalNotification *notification)
 {

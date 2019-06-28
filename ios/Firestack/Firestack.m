@@ -23,6 +23,10 @@ typedef void (^UserWithTokenResponse)(NSDictionary *, NSError *);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
++ (BOOL)requiresMainQueueSetup {
+  return YES;
+}
+
 // TODO: Implement
 + (void) setup:(UIApplication *) application
 withLaunchOptions: (NSDictionary *) launchOptions

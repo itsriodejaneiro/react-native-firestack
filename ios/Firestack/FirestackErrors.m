@@ -12,6 +12,10 @@
 
 RCT_EXPORT_MODULE(FirestackErrors);
 
++ (BOOL)requiresMainQueueSetup {
+  return YES;
+}
+
 + (void) handleException:(NSException *)exception
             withCallback:(RCTResponseSenderBlock)callback
 {

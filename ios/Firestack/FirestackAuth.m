@@ -16,6 +16,10 @@ typedef void (^UserWithTokenResponse)(NSDictionary *, NSError *);
 
 RCT_EXPORT_MODULE(FirestackAuth);
 
++ (BOOL)requiresMainQueueSetup {
+  return YES;
+}
+
 RCT_EXPORT_METHOD(signInAnonymously:
                   (RCTResponseSenderBlock) callback)
 {

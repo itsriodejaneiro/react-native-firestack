@@ -21,6 +21,10 @@ RCT_EXPORT_MODULE(FirestackStorage);
   return dispatch_queue_create("io.fullstack.firestack.storage", DISPATCH_QUEUE_SERIAL);
 }
 
++ (BOOL)requiresMainQueueSetup {
+  return YES;
+}
+
 RCT_EXPORT_METHOD(downloadUrl: (NSString *) storageUrl
                   path:(NSString *) path
     callback:(RCTResponseSenderBlock) callback)

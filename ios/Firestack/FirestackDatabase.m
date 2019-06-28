@@ -22,6 +22,10 @@
 
 @implementation FirestackDBReference
 
++ (BOOL)requiresMainQueueSetup {
+  return YES;
+}
+
 - (id) initWithPath:(NSString *) path
 {
   self = [super init];
